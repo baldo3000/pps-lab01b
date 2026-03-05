@@ -13,7 +13,7 @@ public class BankAccount {
     }
 
     public void withdraw(int amount) {
-        if (this.getBalance() < amount){
+        if (this.getBalance() < amount) {
             throw new IllegalStateException();
         }
         base.withdraw(amount + 1);

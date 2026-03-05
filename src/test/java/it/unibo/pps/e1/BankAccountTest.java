@@ -12,7 +12,7 @@ public class BankAccountTest {
     private BankAccount account;
 
     @BeforeEach
-    void init(){
+    void init() {
         this.account = new BankAccount();
     }
 
@@ -35,7 +35,7 @@ public class BankAccountTest {
     }
 
     @Test
-    public void testCannotWithdrawMoreThanAvailable(){
+    public void testCannotWithdrawMoreThanAvailable() {
         this.account.deposit(1000);
         assertThrows(IllegalStateException.class, () -> this.account.withdraw(1200));
     }
