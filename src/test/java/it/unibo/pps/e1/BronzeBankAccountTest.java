@@ -6,19 +6,27 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class SilverBankAccountTest extends AbstractBankAccountTest {
-
+public class BronzeBankAccountTest extends AbstractBankAccountTest {
     @BeforeEach
     void init() {
         BankAccountFactory factory = new BankAccountFactoryImpl();
-        this.account = factory.createSilverBankAccount();
+        this.account = factory.createBronzeBankAccount();
     }
 
     @Test
     @Override
     public void testCanWithdraw() {
         int depositAmount = 1000;
-        int withdrawAmount = 200;
+        int withdrawAmount = 99;
+        this.account.deposit(depositAmount);
+        this.account.withdraw(withdrawAmount);
+        assertEquals(depositAmount - withdrawAmount, this.account.getBalance());
+    }
+
+    @Test
+    public void testCanWithdrawWithFee() {
+        int depositAmount = 1000;
+        int withdrawAmount = 100;
         int expectedFee = 1;
         this.account.deposit(depositAmount);
         this.account.withdraw(withdrawAmount);

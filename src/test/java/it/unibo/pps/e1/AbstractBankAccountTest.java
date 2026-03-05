@@ -1,20 +1,12 @@
 package it.unibo.pps.e1;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public abstract class BankAccountTest {
+public abstract class AbstractBankAccountTest {
 
     protected BankAccount account;
-
-    protected abstract BankAccount createBankAccountToTest();
-
-    @BeforeEach
-    void init() {
-        this.account = createBankAccountToTest();
-    }
 
     @Test
     public void testInitiallyEmpty() {

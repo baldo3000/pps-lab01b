@@ -6,29 +6,29 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class SilverBankAccountTest extends AbstractBankAccountTest {
+public class GoldBankAccountTest extends AbstractBankAccountTest {
+
+    private final int OVERDRAFT = 500;
 
     @BeforeEach
     void init() {
         BankAccountFactory factory = new BankAccountFactoryImpl();
-        this.account = factory.createSilverBankAccount();
+        this.account = factory.createGoldBankAccount();
     }
 
     @Test
-    @Override
-    public void testCanWithdraw() {
+    public void testWithdrawMoreThanAvailableBelowLimit() {
         int depositAmount = 1000;
-        int withdrawAmount = 200;
-        int expectedFee = 1;
+        int withdrawAmount = depositAmount + OVERDRAFT;
         this.account.deposit(depositAmount);
         this.account.withdraw(withdrawAmount);
-        assertEquals(depositAmount - withdrawAmount - expectedFee, this.account.getBalance());
+        assertEquals(depositAmount - withdrawAmount, this.account.getBalance());
     }
 
     @Test
-    public void testCannotWithdrawMoreThanAvailable() {
+    public void testWithdrawMoreThanAvailableAboveLimit() {
         int depositAmount = 1000;
-        int withdrawAmount = 1200;
+        int withdrawAmount = depositAmount + OVERDRAFT + 1;
         this.account.deposit(depositAmount);
         assertThrows(IllegalStateException.class, () -> this.account.withdraw(withdrawAmount));
     }

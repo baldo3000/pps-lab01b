@@ -1,8 +1,10 @@
 package it.unibo.pps.e1;
 
-public class CoreBankAccountTest extends BankAccountTest {
-    @Override
-    protected BankAccount createBankAccountToTest() {
-        return new CoreBankAccount();
+import org.junit.jupiter.api.BeforeEach;
+
+public class CoreBankAccountTest extends AbstractBankAccountTest {
+    @BeforeEach
+    void init() {
+        this.account = new CoreBankAccount();
     }
 }
