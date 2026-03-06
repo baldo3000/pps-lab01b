@@ -1,0 +1,45 @@
+classDiagram
+    class BankAccountFactory{
+        +createSilverBankAccount() : BankAccount
+        +createGoldBankAccount() : BankAccount
+        +createBronzeBankAccount() : BankAccount
+    }
+    class BankAccountFactoryImpl{
+        +createSilverBankAccount() : BankAccount
+        +createGoldBankAccount() : BankAccount
+        +createBronzeBankAccount() : BankAccount
+    }
+    class CoreBankAccount {
+      +getBalance() int
+      +deposit(int)
+      +withdraw(int)
+    }
+    class BankAccount{
+        <<interface>>
+        +getBalance() int
+      +deposit(int)
+      +withdraw(int)
+    }
+    class FeeBankAccount {
+      -decoratedAccount : BankAccount
+      +getBalance() int
+      +deposit(int)
+      +withdraw(int)
+    }
+    class OverdraftCheckBankAccount {
+        -decoratedAccount : BankAccount
+      +getBalance() int
+      +deposit(int)
+      +withdraw(int)
+    }
+    
+
+    BankAccount <|.. CoreBankAccount
+    BankAccount <|.. FeeBankAccount
+    BankAccount <|.. OverdraftCheckBankAccount
+    FeeBankAccount o-- BankAccount
+    OverdraftCheckBankAccount o-- BankAccount
+    BankAccountFactory <|.. BankAccountFactoryImpl
+    BankAccountFactoryImpl ..> CoreBankAccount : create
+    BankAccountFactoryImpl ..> FeeBankAccount : create
+    BankAccountFactoryImpl ..> OverdraftCheckBankAccount : create

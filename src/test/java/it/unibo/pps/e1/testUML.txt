@@ -1,0 +1,28 @@
+classDiagram
+    class CoreBankAccountTest {
+    }
+    class AbstractBankAccountTest{
+      <<abstract>>
+      #account : BankAccount
+      +testInitiallyEmpty()
+      +testCanDeposit()
+      +testCanWithdraw()
+    }
+    class SilverBankAccountTest {
+      +testCanWithdraw()
+      +testCannotWithdrawMoreThanAvailable()
+    }
+    class GoldBankAccountTest {
+      +testWithdrawMoreThanAvailableBelowLimit()
+      +testWithdrawMoreThanAvailableAboveLimit()
+    }
+    class BronzeBankAccountTest {
+      +testCanWithdraw()
+      +testCanWithdrawWithFee()
+      +testCannotWithdrawMoreThanAvailable()
+    }
+
+    AbstractBankAccountTest <|-- CoreBankAccountTest
+    AbstractBankAccountTest <|-- SilverBankAccountTest
+    AbstractBankAccountTest <|-- GoldBankAccountTest
+    AbstractBankAccountTest <|-- BronzeBankAccountTest
