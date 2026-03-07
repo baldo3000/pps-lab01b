@@ -17,6 +17,11 @@ public class LogicsImplTest {
     }
 
     @Test
+    public void testInitialPositionsColliding() {
+        assertThrows(IllegalStateException.class, () -> new LogicsImpl(TEST_SIZE, INITIAL_PAWN_POSITION, INITIAL_PAWN_POSITION));
+    }
+
+    @Test
     public void testCorrectPawnInitialPosition() {
         assertTrue(this.logics.hasPawn(INITIAL_PAWN_POSITION.getX(), INITIAL_PAWN_POSITION.getY()));
     }
