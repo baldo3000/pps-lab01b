@@ -1,6 +1,6 @@
 package it.unibo.pps.e2;
 
-import java.util.*;
+import java.util.Random;
 
 public class LogicsImpl implements Logics {
 
@@ -8,6 +8,12 @@ public class LogicsImpl implements Logics {
     private Pair<Integer, Integer> knight;
     private final Random random = new Random();
     private final int size;
+
+    public LogicsImpl(int size, Pair<Integer, Integer> pawnPosition, Pair<Integer, Integer> knightPosition) {
+        this.size = size;
+        this.pawn = pawnPosition;
+        this.knight = knightPosition;
+    }
 
     public LogicsImpl(int size) {
         this.size = size;

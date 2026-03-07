@@ -1,10 +1,11 @@
 package it.unibo.pps.e2;
 
 import javax.swing.*;
-import java.util.*;
-import java.util.Map.Entry;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
 
 public class GUI extends JFrame {
 
