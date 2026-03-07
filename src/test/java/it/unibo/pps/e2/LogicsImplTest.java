@@ -73,6 +73,6 @@ public class LogicsImplTest {
 
     @Test
     public void testKnightMovingIOutOfArena() {
-        assertThrows(IndexOutOfBoundsException.class, () -> this.logics.hit(TEST_SIZE + 1, TEST_SIZE + 1));
+        assertThrows(IndexOutOfBoundsException.class, () -> this.logics.hit(5, 5));
     }
 }
