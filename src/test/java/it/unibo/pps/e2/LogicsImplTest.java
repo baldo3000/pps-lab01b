@@ -3,8 +3,7 @@ package it.unibo.pps.e2;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class LogicsImplTest {
     private static final int TEST_SIZE = 5;
@@ -65,5 +64,10 @@ public class LogicsImplTest {
         int newY = 3;
         this.logics.hit(newX, newY);
         assertFalse(this.logics.hasKnight(newX, newY));
+    }
+
+    @Test
+    public void testKnightMovingIOutOfArena() {
+        assertThrows(IndexOutOfBoundsException.class, () -> this.logics.hit(TEST_SIZE + 1, TEST_SIZE + 1));
     }
 }
