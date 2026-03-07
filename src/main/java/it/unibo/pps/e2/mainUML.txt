@@ -1,0 +1,41 @@
+classDiagram
+    class Logics{
+        <<interface>>
+        +hit(int, int) boolean
+        +hasKnight(int, int) boolean
+        +hasPawn(int, int) boolean
+    }
+    class LogicsImpl{
+        -Board Board
+        -Moveset knightMoveset
+    }
+    Logics <|.. LogicsImpl
+
+    class Board{
+        <<interface>>
+        +moveKnight(Pair)
+        +getPawnPosition() Pair~Integer, Integer~
+        +getKnightPosition() Pair~Integer, Integer~
+    }
+
+    class BoardImpl{
+        -int size
+        -Pair~Integer, Integer~ pawnPosition
+        -Pair~Integer, Integer~ knightPosition
+    }
+
+    Board <|.. BoardImpl
+
+    class Moveset{
+        <<functional interface>>
+        +checkMove(Pair, Pair) boolean
+    }
+
+    class KnightMoveSet{
+
+    }
+
+    Moveset <|.. KnightMoveSet
+
+    LogicsImpl o--> Board
+    LogicsImpl o--> Moveset
